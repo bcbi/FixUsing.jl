@@ -27,12 +27,12 @@ end
 @static if Base.VERSION >= v"1.0-"
     function _has_jlfixture_suffix(name::AbstractString)
         suffix = r".jl.fixture$"
-        return endswith(lowercase(strip(f)), suffix)
+        return endswith(lowercase(strip(name)), suffix)
     end
 else
     function _has_jlfixture_suffix(name::AbstractString)
         suffix = ".jl.fixture"
-        return endswith(lowercase(strip(f)), suffix)
+        return endswith(lowercase(strip(name)), suffix)
     end
 end
 
