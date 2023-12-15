@@ -1,3 +1,7 @@
+codecov:
+  notify:
+    # Tell Codecov to not create its statuses until CI has finished running
+    wait_for_ci: yes
 coverage:
   status:
     project:
