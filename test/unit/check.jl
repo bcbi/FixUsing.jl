@@ -10,7 +10,7 @@ end
     @show FixUsing._check_directory_return_bool(dir)
     @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(dir)
 
-    (; all_good, num_julia_files) = FixUsing._check_directory_return_bool_countfiles(dir)
-    @test !all_good
-    @test num_julia_files == 1
+    result = FixUsing._check_directory_return_bool_countfiles(dir)
+    @test !result.all_good
+    @test result.num_julia_files == 1
 end
