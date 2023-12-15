@@ -24,7 +24,7 @@ function check_directory(
     directory::AbstractString;
     is_julia_file::F = _file_has_julia_file_extension,
 ) where {F}
-    all_good = _check_directory_return_bool(directory; is_julia_file)
+    all_good = _check_directory_return_bool(directory; is_julia_file = is_julia_file)
     if !all_good
         msg = "At least one file includes usage of `using Foo`"
         throw(UseOfUsingWithoutColon(msg))
@@ -43,7 +43,7 @@ function _check_directory_return_bool(
     directory::AbstractString;
     is_julia_file::F = _file_has_julia_file_extension,
 ) where {F}
-    result = _check_directory_return_bool_countfiles(directory; is_julia_file)
+    result = _check_directory_return_bool_countfiles(directory; is_julia_file = is_julia_file)
     return result.all_good
 end
 
