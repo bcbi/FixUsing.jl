@@ -32,8 +32,9 @@ end
 ### Internals:
 
 @inline function _file_has_julia_file_extension(name::AbstractString)
-    name_cleaned = lowercase(strip(name))
-    return endswith(name_cleaned, ".jl")
+    ext = splitext(name)
+    ext_cleaned = lowercase(strip(ext))
+    return ext_cleaned == ".jl"
 end
 
 function _check_directory_return_bool(
