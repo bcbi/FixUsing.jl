@@ -1,4 +1,5 @@
-@static if Base.VERSION < v"1.4-"
+# No need for `@static` at top-level
+if Base.VERSION < v"1.4-"
     function only(v::AbstractVector)
         n = length(v)
         if n != 1
