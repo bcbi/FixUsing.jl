@@ -40,6 +40,7 @@ function fix_file_extensions(dir::AbstractString)
     for (root, dirs, files) in walkdir(dir)
         for f in files
             if _has_jlfixture_suffix(f)
+                suffix = r".jl.fixture$"
                 new_filename = replace(f, suffix => ".jl")
                 old_path = joinpath(root, f)
                 new_path = joinpath(root, new_filename)
