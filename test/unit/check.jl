@@ -8,10 +8,10 @@
     @testset "bad" begin
         filename = readonly_fixture("dir_contains_bad_using", "bad_using_1.jl.fixture")
         @test !FixUsing._check_file_return_bool(filename)
-        FixUsing.check(filename) # TODO: delete this line
-        FixUsing.check_file(filename) # TODO: delete this line
-        # @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(filename) # TODO: uncomment this line
-        # @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check_file(filename) # TODO: uncomment this line
+        # FixUsing.check(filename) # TODO: delete this line
+        # FixUsing.check_file(filename) # TODO: delete this line
+        @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(filename) # TODO: uncomment this line
+        @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check_file(filename) # TODO: uncomment this line
     end
 end
 
@@ -22,8 +22,8 @@ end
     @testset "bad" begin
         dir = writable_fixture("dir_contains_bad_using")
         cd(dir) do
-            FixUsing.check(".") # TODO: delete this line
-            FixUsing.check_directory(".") # TODO: delete this line
+            # FixUsing.check(".") # TODO: delete this line
+            # FixUsing.check_directory(".") # TODO: delete this line
             @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(".") # TODO: uncomment this line
             @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check_directory(".") # TODO: uncomment this line
     
