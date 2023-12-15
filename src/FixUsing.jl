@@ -18,6 +18,7 @@ PublicMacro.@public overwrite_directory
 include("types.jl")
 
 include("check.jl")
+include("compat.jl")
 include("fix.jl")
 
 end # module
