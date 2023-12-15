@@ -24,7 +24,8 @@ function writable_fixture(path_components...)
     return joinpath(dest, path_components...)
 end
 
-@static if Base.VERSION >= v"1.0-"
+@static if Base.VERSION >= v"1.2-"
+    # The `endswith(::String, ::Regex)` method was only added in Julia 1.2.
     function _has_jlfixture_suffix(name::AbstractString)
         suffix = r".jl.fixture$"
         return endswith(lowercase(strip(name)), suffix)
