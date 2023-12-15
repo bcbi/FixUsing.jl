@@ -60,11 +60,11 @@ function _check_directory_return_bool_countfiles(
                 full_path_to_file = joinpath(root, file)
                 all_good *= _check_file_return_bool(full_path_to_file)
             else
-                @logmsg LogLevel(0) "Not a Julia file: $(file)"
+                @logmsg LogLevel(-10) "Not a Julia file: $(file)"
             end
         end
     end
-    return (; all_good, num_julia_files)
+    return (; all_good = all_good, num_julia_files = num_julia_files)
 end
 
 @inline _is_import_node(node) = JuliaSyntax.kind(node) == JuliaSyntax.K"import"
