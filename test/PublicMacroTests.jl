@@ -4,7 +4,8 @@ module PublicMacroTestsInner
 
 using FixUsing.PublicMacro: @public
 
-@public f @hello
+@public f
+@public @hello
 
 function f end
 
