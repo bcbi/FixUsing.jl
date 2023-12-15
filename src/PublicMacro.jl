@@ -45,7 +45,7 @@ function _is_valid_macro(expr::Expr)
             end
         end
     end
-    return nothing
+    return false
 end
 
 _get_valid_macro_name(expr::Expr) = expr.args[1]::Symbol
@@ -68,7 +68,7 @@ function _get_symbols(expr::Union{Expr,Symbol})
     for (i, arg) in enumerate(expr.args)
         if arg isa Symbol
             symbols[i] = arg
-        elseif _valid_macro(arg)
+        elseif _is_valid_macro(arg)
             symbols[i] = _get_valid_macro_name(arg)
         else
             throw(
