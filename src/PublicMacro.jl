@@ -41,7 +41,7 @@ function _is_valid_macro(expr::Expr)
             end
         end
     end
-    return nothing
+    return false
 end
 
 _get_valid_macro_name(expr::Expr) = expr.args[1]::Symbol
