@@ -12,7 +12,12 @@ end
 
 function writable_fixture(path_components...)
     fixtures_dir = _get_fixtures_dir()
-    tmp_dir = mktempdir(; cleanup = true)
+    @static if Base.VERSION >= v"1.3-"
+        tmp_dir = mktempdir(; cleanup = true)
+    else
+        # The `cleanup` kwarg was only added in Julia 1.3
+        tmp_dir = mktempdir()
+    end
     dest = joinpath(tmp_dir, "mywritablefixtures")
     cp(fixtures_dir, dest)
     fix_file_extensions(dest)
