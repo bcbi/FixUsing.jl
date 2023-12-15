@@ -13,6 +13,9 @@ include("testutil/fixtures.jl")
     @testset "unit/check" begin
         include("unit/check.jl")
     end
+    @testset "unit/compat" begin
+        include("unit/compat.jl")
+    end
     @testset "unit/parsing_errors" begin
         include("unit/parsing_errors.jl")
     end
