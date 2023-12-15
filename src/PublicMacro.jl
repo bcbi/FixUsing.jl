@@ -7,14 +7,18 @@ module PublicMacro
 
 # https://github.com/JuliaLang/julia/pull/50105
 # https://github.com/JuliaLang/Compat.jl/pull/805
-macro public(expr::Union{Expr,Symbol})
-    symbols = _get_symbols(expr)
-    @static if Base.VERSION >= v"1.11.0-DEV.469"
+
+# No need for `@static` at top-level
+if Base.VERSION >= v"1.11.0-DEV.469"
+    macro public(expr::Union{Expr,Symbol})
+        symbols = _get_symbols(expr)
         return esc(Expr(:public, symbols...))
     end
-    return nothing
+else
+    macro public(expr::Union{Expr,Symbol})
+        return nothing
+    end
 end
-
 
 """
     _is_valid_macro(expr::Expr)
