@@ -70,7 +70,7 @@ end
 
 function _check_file_return_bool(filename::AbstractString)
     filecontents = read(filename, String)
-    syntax_node = JuliaSyntax.parseall(JuliaSyntax.SyntaxNode, filecontents; filename)
+    syntax_node = JuliaSyntax.parseall(JuliaSyntax.SyntaxNode, filecontents; filename = filename)
     return _recurse_check_return_bool(syntax_node)
 end
 
