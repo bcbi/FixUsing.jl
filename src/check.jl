@@ -5,11 +5,9 @@
 function check(path::AbstractString)
     if isfile(path)
         check_file(path)
-    elseif isdir(path)
-        check_directory(path)
     else
-        msg = "Could not figure out if this is a file or directory"
-        throw(Base.ArgumentError(msg))
+        isdir(path) || throw(Base.ArgumentError("Could not figure out if this is a file or directory"))
+        check_directory(path)
     end
     return nothing
 end

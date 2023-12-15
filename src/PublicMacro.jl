@@ -50,7 +50,7 @@ function _get_symbols(expr::Union{Expr,Symbol})
     if expr isa Symbol
         return [expr]
     end
-    if _valid_macro()
+    if _is_valid_macro(expr)
         return [_get_valid_macro_name(expr)]
     end
     if expr.head != :tuple

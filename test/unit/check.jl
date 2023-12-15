@@ -7,10 +7,12 @@ end
 
 @testset "directory" begin
     dir = writable_fixture("dir_contains_bad_using")
-    @show FixUsing._check_directory_return_bool(dir)
-    @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(dir)
+    cd(dir) do
+        @show FixUsing._check_directory_return_bool(".")
+        @test_throws FixUsing.UseOfUsingWithoutColon FixUsing.check(".")
 
-    result = FixUsing._check_directory_return_bool_countfiles(dir)
-    @test !result.all_good
-    @test result.num_julia_files == 1
+        result = FixUsing._check_directory_return_bool_countfiles(".")
+        @test !result.all_good
+        @test result.num_julia_files == 1
+    end
 end
