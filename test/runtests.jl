@@ -16,4 +16,8 @@ include("testutil/fixtures.jl")
     @testset "unit/parsing_errors" begin
         include("unit/parsing_errors.jl")
     end
+
+    @testset "PublicMacro" begin 
+        include("PublicMacroTests.jl")
+    end
 end
