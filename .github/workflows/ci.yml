@@ -21,16 +21,8 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.0' # TODO: delete some of these
-          - '1.1' # TODO: delete some of these
-          - '1.2' # TODO: delete some of these
-          - '1.3' # TODO: delete some of these
-          - '1.4' # TODO: delete some of these
-          - '1.5' # TODO: delete some of these
-          - '1.6' # TODO: delete some of these
-          - '1.7' # TODO: delete some of these
-          - '1.8' # TODO: delete some of these
-          - '1.9' # TODO: delete some of these
+          - '1.0' # The first LTS
+          - '1.6' # The second LTS
           - '1'
           - 'nightly'
         os:
