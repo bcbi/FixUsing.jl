@@ -45,9 +45,8 @@ function _check_directory_return_bool(
     directory::AbstractString;
     is_julia_file::F = _file_has_julia_file_extension,
 ) where {F}
-    (; all_good, num_julia_files) =
-        _check_directory_return_bool_countfiles(directory; is_julia_file)
-    return all_good
+    result = _check_directory_return_bool_countfiles(directory; is_julia_file)
+    return result.all_good
 end
 
 function _check_directory_return_bool_countfiles(
