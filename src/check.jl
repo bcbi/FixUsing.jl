@@ -32,7 +32,7 @@ end
 ### Internals:
 
 @inline function _file_has_julia_file_extension(name::AbstractString)
-    ext = splitext(name)
+    base, ext = splitext(name)
     ext_cleaned = lowercase(strip(ext))
     return ext_cleaned == ".jl"
 end
