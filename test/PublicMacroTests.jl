@@ -2,7 +2,7 @@ module PublicMacroTestsOuter
 
 module PublicMacroTestsInner
 
-Using FixUsing.PublicMacro: @public
+using FixUsing.PublicMacro: @public
 
 @public f @hello
 
