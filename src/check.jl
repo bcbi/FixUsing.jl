@@ -2,34 +2,31 @@
 
 # using FixUsing: check
 # check(".")
-function check(path::AbstractString)
+function check(path::AbstractString)::Nothing
     if isfile(path)
         check_file(path)
     else
         isdir(path) || throw(Base.ArgumentError("Could not figure out if this is a file or directory"))
         check_directory(path)
     end
-    return nothing
 end
 
-function check_file(filename::AbstractString)
+function check_file(filename::AbstractString)::Nothing
     if !_check_file_return_bool(filename::AbstractString)
         msg = "The file includes usage of `using Foo`"
         throw(UseOfUsingWithoutColon(msg))
     end
-    return nothing
 end
 
 function check_directory(
     directory::AbstractString;
     is_julia_file::F = _file_has_julia_file_extension,
-) where {F}
+)::Nothing where {F}
     all_good = _check_directory_return_bool(directory; is_julia_file = is_julia_file)
     if !all_good
         msg = "At least one file includes usage of `using Foo`"
         throw(UseOfUsingWithoutColon(msg))
     end
-    return nothing
 end
 
 ### Internals:
@@ -104,7 +101,7 @@ function _is_this_using_node_good(node)
 
     children = JuliaSyntax.children(node)
     if (length(children) == 1) && (_is_colon_node(only(children)))
-        @logmsg LogLevel(-100) "Found node of the form `using Foo: f`" node
+        # @logmsg LogLevel(-100) "Found node of the form `using Foo: f`" node # TODO: uncomment this line
         good = true
     else
         msg = @error "Found node of the form `using Foo`" node
