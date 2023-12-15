@@ -57,7 +57,7 @@ function _check_directory_return_bool_countfiles(
                 full_path_to_file = joinpath(root, file)
                 all_good *= _check_file_return_bool(full_path_to_file)
             else
-                @logmsg LogLevel(-10) "Not a Julia file: $(file)"
+                # @logmsg LogLevel(-10) "Not a Julia file: $(file)" # TODO: uncomment this line
             end
         end
     end
@@ -80,7 +80,7 @@ function _recurse_check_return_bool(node::JuliaSyntax.SyntaxNode)
     overall_goodness = true
 
     if _is_import_node(node)
-        @logmsg LogLevel(-100) "Found node of the form `import Foo`" node
+        # @logmsg LogLevel(-100) "Found node of the form `import Foo`" node # TODO: uncomment this line
     end
 
     if _is_using_node(node)
