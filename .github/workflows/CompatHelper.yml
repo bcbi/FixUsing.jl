@@ -15,7 +15,7 @@ jobs:
         run: which julia
         continue-on-error: true
       - name: Install Julia, but only if it is not already available in the PATH
-        uses: julia-actions/setup-julia@v1
+        uses: julia-actions/setup-julia@58ad1cdde70774ab0693de31c3cd4e751b46aea2
         with:
           version: '1'
           arch: ${{ runner.arch }}
