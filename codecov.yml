@@ -1,7 +1,7 @@
 codecov:
   require_ci_to_pass: yes # Tell Codecov to not create its statuses until CI has finished running
   notify:
-    after_n_builds: 12
+    after_n_builds: 4
     wait_for_ci: yes # Tell Codecov to not create its statuses until CI has finished running
 
 coverage:
